@@ -1,6 +1,8 @@
 ## Programování s AI
 
-V prvním dílu jsme si řekli, proč se programovat učit, i když kód umí napsat AI, a proč je čtení kódu důležitější než jeho psaní. Teď půjdeme dál. Naučíme se s AI pracovat tak, abyste byli vy ten, kdo rozhoduje, a ona ten, kdo píše.
+Značnou část kódu, se kterým budete v praxi pracovat, nenapíšete vy. Napíše ho AI a vaše role bude jiná: zadat úlohu, výsledek přečíst, ověřit a opravit. Odpovědnost za to, co program spočítá, ale nikam nezmizí a zůstává na vás.
+
+Tahle kapitola je o tom, jak s AI pracovat tak, abyste byli vy ten, kdo rozhoduje, a ona ten, kdo píše.
 
 ### Čtyři způsoby, jak AI generuje kód
 
@@ -133,7 +135,45 @@ Spustíte je příkazem
 pytest
 ```
 
-Pytest sám najde všechny soubory s testy, spustí je a vypíše, které prošly a které ne. U neúspěšného testu ukáže, jakou hodnotu čekal a jakou dostal.
+Pytest sám najde všechny soubory s testy a spustí je. Když je všechno v pořádku, vypíše za každý test tečku:
+
+```
+============================= test session starts =============================
+platform win32 -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0
+rootdir: C:\Users\student\geo
+collected 3 items
+
+test_prevody.py ...                                                      [100%]
+
+============================== 3 passed in 0.02s ==============================
+```
+
+Užitečnější je ale výstup ve chvíli, kdy něco neprojde. Tady implementace zapomněla, že na jižní polokouli se minuty a vteřiny od stupňů odečítají, ne přičítají:
+
+```
+============================= test session starts =============================
+platform win32 -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0
+rootdir: C:\Users\student\geo
+collected 3 items
+
+test_prevody.py .F.                                                      [100%]
+
+================================== FAILURES ===================================
+____________________________ test_jizni_polokoule _____________________________
+
+    def test_jizni_polokoule():
+>       assert abs(dms_na_stupne(-33, 52, 10) + 33.869444) < 0.000001
+E       assert 1.7388884444444486 < 1e-06
+E        +  where 1.7388884444444486 = abs((-32.13055555555555 + 33.869444))
+E        +    where -32.13055555555555 = dms_na_stupne(-33, 52, 10)
+
+test_prevody.py:9: AssertionError
+=========================== short test summary info ===========================
+FAILED test_prevody.py::test_jizni_polokoule - assert 1.7388884444444486 < 1e-06
+========================= 1 failed, 2 passed in 0.04s =========================
+```
+
+Číst se to dá ve třech krocích. Na řádku `test_prevody.py .F.` vidíte, že prostřední test selhal, protože tečka znamená úspěch a `F` neúspěch. V bloku FAILURES pytest rozepíše, jak k výsledku došel. A na posledním řádku rozpisu je vidět jádro věci: funkce vrátila -32.13 místo očekávaných -33.87, tedy minuty a vteřiny přičetla k zápornému číslu.
 
 ### Co testovat
 

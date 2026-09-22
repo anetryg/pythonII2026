@@ -7,7 +7,7 @@ V rámci Python notebooku nejprve do vrstvy SILNICE_DALNICE vložte nový sloupe
 
 
 # Úkol 2
-""" Vytvořte pomocí Python notebooku v ArcGISu Pro histogram z vrstvy SILNICE_DALNICE na základě sloupce Shape_Leng, který vyexportujete jako svg. Histogram bude rozdělen na 7 sloupců, vytvořte název grafu, pojmenujte osy x a y a přidejte popis grafu. """
+""" Vytvořte pomocí Python notebooku v ArcGISu Pro histogram z vrstvy SILNICE_DALNICE na základě sloupce SHAPE_Leng, který vyexportujete jako svg. Histogram bude rozdělen na 7 sloupců, vytvořte název grafu, pojmenujte osy x a y a přidejte popis grafu. """
 
 
 # Úkol 3

@@ -23,11 +23,12 @@ počet prvků, názvy sloupců a souřadnicový systém. Podívejte se na první
 """
 Souřadnicové systémy v praxi.
 
-Spočítejte délku silnic tak, jak jsou vrstvy načtené, a součet si zapište. Potom obě
-vrstvy převeďte do systému S-JTSK, který má kód 5514 a pracuje v metrech, a délku
-spočítejte znovu.
+Zjistěte, v jakém souřadnicovém systému data jsou, a spočítejte celkovou délku silnic
+v kilometrech. Potom vrstvu převeďte do systému WGS84, který má kód 4326 a pracuje
+ve stupních, a délku spočítejte znovu.
 
-Porovnejte obě čísla a jednou větou vysvětlete, co znamená to první a proč se nedá použít.
+Porovnejte obě čísla a jednou větou vysvětlete, co znamená to druhé a proč se nedá použít.
+Všimněte si, že vás GeoPandas u druhého výpočtu na něco upozorní.
 """
 
 
@@ -37,7 +38,8 @@ Zopakujte úlohu z kapitoly o ArcPy, tentokrát v GeoPandas.
 
 Do vrstvy silnic přidejte sloupec "kategorie". Pokud má linie vyplněný sloupec "JMENO"
 a je delší než 1000 metrů, vložte hodnotu "01", jinak vložte "00". Pozor na to, že
-délka musí být v metrech, tedy po převodu z úkolu 3.
+délka musí být v metrech, takže pracujte s daty v jejich původním systému, ne v tom
+převedeném z úkolu 3.
 
 Spočítejte, kolik linií spadlo do které kategorie.
 """

@@ -115,6 +115,8 @@ silnice["delka_m"] = silnice.geometry.length
 uzemi["plocha_ha"] = uzemi.geometry.area / 10000
 ```
 
+Data v tomto kurzu jsou v S-JTSK už při načtení, takže u nich převod nic nezmění. Past je tady opačná: kdybyste je převedli do WGS84, délky a plochy začnou vycházet ve stupních. GeoPandas na to naštěstí upozorní varováním.
+
 **Dvě vrstvy, které spolu mají něco dělat, musí být ve stejném systému.** GeoPandas vás na rozdílný systém upozorní, ale ne u všech operací, takže si to hlídejte sami.
 
 ### Výběr a filtrování

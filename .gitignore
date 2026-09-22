@@ -1,0 +1,9 @@
+*_reseni.py
+
+# Zamykací soubory, které vytváří ArcGIS Pro nad otevřenými daty
+*.lock
+
+# Vedlejší produkty Pythonu
+__pycache__/
+*.pyc
+.pytest_cache/
